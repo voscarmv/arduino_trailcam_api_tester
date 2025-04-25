@@ -1,7 +1,7 @@
 import fetch from 'node-fetch';
 import dotenv from 'dotenv';
-const formdata = require('form-data');
-const fs = require('fs');
+import FormData from 'form-data';
+import fs from 'fs';
 
 dotenv.config();
 
