@@ -54,7 +54,7 @@ dotenv.config();
     let headers2;
 
     const imagePath = './image.jpg';
-    const railsEndpoint = `${process.env.APIURL}/image`;
+    const railsEndpoint = `${process.env.APIURL}/photo`;
 
     const imageBuffer = fs.readFileSync(imagePath);
     const form = new FormData();
