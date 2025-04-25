@@ -14,7 +14,7 @@ dotenv.config();
         headers: {
           'Content-Type': 'application/json', // Set the content type
         },
-        body: JSON.stringify({ email_address: usr, password: pass }) // Send the body as JSON
+        body: JSON.stringify({ user: { email_address: usr, password: pass }}) // Send the body as JSON
       });
       output = await response.json();
     } catch (e) {
