@@ -53,24 +53,24 @@ dotenv.config();
     let output2;
     let headers2;
 
-    const imagePath = './image.jpg';
-    const railsEndpoint = `${process.env.APIURL}/photo`;
+    const imagePath = './image.jpeg';
+    const railsEndpoint = `${process.env.APIURL}/photos`;
 
     const imageBuffer = fs.readFileSync(imagePath);
     const form = new FormData();
-    // form.append('image', imageBuffer, { filename: 'image.jpg', contentType: 'image/jpeg' }); // Customize filename and contentType as needed
+    // form.append('image', imageBuffer, { filename: 'image.jpeg', contentType: 'image/jpeg' }); // Customize filename and contentType as needed
 
     form.append('photo[title]', 'Sample Title');
     form.append('photo[image]', imageBuffer, {
-      filename: 'image.jpg',
+      filename: 'image.jpeg',
       contentType: 'image/jpeg',
     });
-
+    // curl -X POST http://localhost:3000/photos -F "photo[title]=Sample Title"  -F "photo[image]=@/path/to/image.jpg"
     try {
       const response = await fetch(railsEndpoint, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/json',
+          'Accept': 'application/json',
           'Authorization': `Bearer ${output.data.token}`,
         },
         body: form,
