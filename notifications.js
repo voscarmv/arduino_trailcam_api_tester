@@ -27,7 +27,8 @@ dotenv.config();
         const token = `${output.data.token}`;
         const cableUrl = `${process.env.WS}/cable?token=${token}`;
         const ws = new WebSocket(cableUrl);
-
+        let output2;
+        let headers2;
         ws.on('open', async function open() {
             console.log('Connected to the server');
             const msg = {
@@ -40,8 +41,6 @@ dotenv.config();
             ws.send(JSON.stringify(msg));
             // Try to reset token here
 
-            let output2;
-            let headers2;
             try {
                 const response = await fetch(url, {
                     method: 'PUT',
